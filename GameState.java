@@ -24,6 +24,10 @@ public class GameState {
     public void putInMap(int xy, int piece) {
         coordinatePlane.put(xy, piece);
     }
+
+    public void updateMap(Integer xy, Integer piece) {
+        coordinatePlane.replace(xy, piece);
+    }
     
     public int checkPiece(int x, int y) {
         int result = coordinatePlane.get((x*10)+y);

@@ -42,13 +42,13 @@ public class Validator {
             } else if (type == 4) {
                 if (Math.abs(x2 - x1) == Math.abs(y2 - y1)) {
                     if (x2 > x1 && y2 > y1) {
-                        for (int i = 1; i < x2 - x1; i++) if (state.checkPiece(x1 + i, y1 + i) != 0) return false;
+                        for (int i = 1; i < x2 - x1; i++) {if (state.checkPiece(x1 + i, y1 + i) != 0) {return false;}}
                     } else if (x2 > x1 && y2 < y1) {
-                        for (int i = 1; i < x2 - x1; i++) if (state.checkPiece(x1 + i, y1 - i) != 0) return false;
+                        for (int i = 1; i < x2 - x1; i++) {if (state.checkPiece(x1 + i, y1 - i) != 0) {return false;}}
                     } else if (x2 < x1 && y2 > y1) {
-                        for (int i = 1; i < x1 - x2; i++) if (state.checkPiece(x1 - i, y1 + i) != 0) return false;
+                        for (int i = 1; i < x1 - x2; i++) {if (state.checkPiece(x1 - i, y1 + i) != 0) {return false;}}
                     } else if (x2 < x1 && y2 < y1) {
-                        for (int i = 1; i < x1 - x2; i++) if (state.checkPiece(x1 - i, y1 - i) != 0) return false;
+                        for (int i = 1; i < x1 - x2; i++) {if (state.checkPiece(x1 - i, y1 - i) != 0) {return false;}}
                     }
                     return true;
                 } else return false;

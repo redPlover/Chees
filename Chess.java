@@ -162,24 +162,21 @@ public class Chess {
                 int symb = state.checkPiece(x1, y1);
                 int type = symb / 10;
                 int color = symb % 10;
-                //System.out.println("x1: " + x1 + "\nx2: " + x2 + "\ny1: " + y1 + "\ny2: " + y2);
+                int cond = state.checkPiece(x2, y2);
+                System.out.println("x1: " + x1 + "\nx2: " + x2 + "\ny1: " + y1 + "\ny2: " + y2);
                 System.out.println(val.validation(type, color, x1, x2, y1, y2));
-                // player turns
                 if (((Main.whiteTurn == true && state.checkPiece(x1, y1) % 10 == 0) || (Main.whiteTurn == false && state.checkPiece(x1, y1) % 10 == 1)) && val.validation(type, color, x1, x2, y1, y2)) {
-                    Integer bx1 = x1;
-                    Integer by1 = y1;
-                    Integer bx2 = x2;
-                    Integer by2 = y2;
-                    state.putInMap(Integer.parseInt(bx1.toString() + by1.toString()), 0);
-                    state.putInMap(Integer.parseInt(bx2.toString() + by2.toString()), state.checkPiece(x1, y1));
                     boardSquares[x1-1][y1-1].removeAll();
                     boardSquares[x2-1][y2-1].removeAll();
+                    boardSquares[x1-1][y1-1].setText("");
                     Integer i = state.checkPiece(x1, y1);
                     boardSquares[x2-1][y2-1].setText(i.toString());
+                    state.updateMap(x2 * 10 + y2, state.checkPiece(x1, y1));
+                    state.updateMap(x1 * 10 + y1, 0);
                     //boardSquares[x2-1][y2-1].add(new JLabel(new ImageIcon(ImageIO.read(new File("images/" + state.checkPiece(x1, y1) + ".png")))));
                     Main.whiteTurn = !Main.whiteTurn;
                     jFrame.repaint();
-                    if (state.checkPiece(x2, y2) == 60 || state.checkPiece(x2, y2) == 61) {
+                    if (cond == 60 || cond == 61) {
                         if (Main.whiteTurn) {
                             System.out.println("Black wins");
                         } else {
