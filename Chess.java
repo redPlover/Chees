@@ -142,7 +142,7 @@ public class Chess {
         jFrame.setVisible(true);
     }
 
-    public void check(int x, int y)  {
+    public void check(int x, int y) {
         x++;
         y++;
 
@@ -178,11 +178,26 @@ public class Chess {
                     jFrame.repaint();
                     if (cond == 60 || cond == 61) {
                         if (Main.whiteTurn) {
-                            System.out.println("Black wins");
+                            JFrame jFrameOth = new JFrame("Black wins");
+                            jFrameOth.setSize(200, 200);
+                            jFrameOth.setLocationRelativeTo(null);
+                            jFrameOth.setResizable(false);
+                            jFrameOth.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                            jFrameOth.setVisible(true);
+                            JLabel wins = new JLabel("Black wins!");
+                            jFrameOth.add(wins);
+                            jFrame.dispose();
                         } else {
-                            System.out.println("White wins");
+                            JFrame jFrameOth = new JFrame("White wins");
+                            jFrameOth.setSize(200, 200);
+                            jFrameOth.setLocationRelativeTo(null);
+                            jFrameOth.setResizable(false);
+                            jFrameOth.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                            jFrameOth.setVisible(true);
+                            JLabel wins = new JLabel("White wins!");
+                            jFrameOth.add(wins);
+                            jFrame.dispose();
                         }
-                        System.exit(0);
                     }
                 }
             }
